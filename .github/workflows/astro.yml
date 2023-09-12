@@ -34,6 +34,10 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Create .env file
+        run: |
+          touch public/.env
+          echo API_KEY=${{ secrets.API_KEY }} >> public/.env
       - name: Deploy Poke
         id: deployment
         uses: actions/deploy-pages@v1
