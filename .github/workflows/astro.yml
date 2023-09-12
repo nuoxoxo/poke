@@ -16,6 +16,8 @@ permissions:
 
 jobs:
   build:
+    env:
+        KEY: ${{ secrets.KEY }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
@@ -34,11 +36,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Create .env file
-        run: |
-          touch .env
-          echo ${{ secrets.KEY }} >> .env
-          cat .env
       - name: Deploy Poke
         id: deployment
         uses: actions/deploy-pages@v1
