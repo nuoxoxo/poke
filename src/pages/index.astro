@@ -1,5 +1,7 @@
 ---
+
 ---
+
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
@@ -32,16 +34,17 @@
 				.then((key) => {
 					const URL = "https://api.pokemontcg.io/v2/cards/"
 					fetch(
-						URL, {
+						'/.netlify/functions/pokemon-api'
+					)
+					/*
+					fetch(URL, {
 							method: "GET",
 							headers: { "X-Api-Key": key }
 						})
+					*/
 						.then((resp) => resp.json())
 						.then((Data) => {
 							localStorage.setItem('pokemon-mmj-data', JSON.stringify(Data))
-							// let IMG = document.getElementById('card_image_div')
-							// let index = Math.floor(Math.random() * Data.data.length)
-							// IMG.src = Data.data[index].images.large
 							SwitchCard(Data)
 						})
 						.catch((error) => {
