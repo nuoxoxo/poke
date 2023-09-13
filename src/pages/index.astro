@@ -33,15 +33,15 @@
 				})
 				.then((key) => {
 					const URL = "https://api.pokemontcg.io/v2/cards/"
+					/*
 					fetch(
 						'/.netlify/functions/pokemon-api'
 					)
-					/*
+					*/
 					fetch(URL, {
 							method: "GET",
 							headers: { "X-Api-Key": key }
 						})
-					*/
 						.then((resp) => resp.json())
 						.then((Data) => {
 							localStorage.setItem('pokemon-mmj-data', JSON.stringify(Data))
